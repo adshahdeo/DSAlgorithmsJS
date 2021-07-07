@@ -67,7 +67,7 @@ class BTree {
         if (root.left !== null) {
             result.push (...this.preOrderTraverse (root.left));
         }
-        result.push(root);
+        result.push(root.val);
         if (root.right !== null) {
             result.push (...this.preOrderTraverse (root.right));
         }
@@ -83,7 +83,7 @@ class BTree {
 
         const result = [];
 
-        result.push(root);
+        result.push(root.val);
         if (root.left !== null) {
             result.push (...this.inOrderTraverse (root.left));
         }
@@ -108,7 +108,7 @@ class BTree {
         if (root.right !== null) {
             result.push (...this.inOrderTraverse (root.right));
         }
-        result.push(root);
+        result.push(root.val);
 
         return result;
     }
