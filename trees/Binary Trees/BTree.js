@@ -26,6 +26,7 @@ class BTree {
 
         if(!parentNode) {
             console.log('The parent you entered does not exist, please enter some other value');
+            return;
         }
         if (parentNode.left) {
             console.log('Left position for this parent is already occupied, please enter another parent');
@@ -48,6 +49,7 @@ class BTree {
         let parentNode = this.find(parent);
         if(!parentNode) {
             console.log('The parent you entered does not exist, please enter some other value');
+            return;
         }
         if (parentNode.right) {
             console.log('Right position for this parent is already occupied, please enter another parent');
@@ -113,6 +115,19 @@ class BTree {
         return result;
     }
 
+    levelOrderTraverse (root) {
+        let queue = [];
+        let tmp = [];
+        tmp.push(root);
+        while (tmp.length) {
+            let node  = tmp.shift();
+            queue.push(node.val);
+            if (node.left !== null) tmp.push(node.left);
+            if (node.right !== null) tmp.push(node.right);
+        }
+        console.log(queue);
+    }
+
     find (val) {
         const nodes = this.preOrderTraverse (this.root);
         for (let i = 0; i < nodes.length; i++) {
@@ -161,7 +176,7 @@ class BTree {
 
 const tree = new BTree ();
 
-tree.insertLeft (10);
+tree.insertNode (10);
 tree.insertRight (6, 10);
 tree.insertRight (7, 6);
 tree.insertLeft (5, 10);
@@ -191,4 +206,5 @@ tree.insertNode (7);
 tree.insertNode (14);
 tree.insertNode (20);
 tree.insertNode (22);
-tree.printTree()
+tree.printTree();
+tree.levelOrderTraverse();
